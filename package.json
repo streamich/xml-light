@@ -1,0 +1,21 @@
+{
+  "name": "xml-light",
+  "description": "Write XML in JavaScript",
+  "version": "1.0.0",
+  "keywords": [
+    "xml",
+    "html",
+    "javascript",
+    "generator",
+    "preprocessor",
+    "xml-light",
+    "html-light",
+    "xml-js",
+    "html-js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/streamich/xml-light"
+  },
+  "main": "index.js"
+}

@@ -36,15 +36,26 @@ function xml(pojo) {
     return ("<" + name + (attr ? ' ' + attr : '')) + (body ? ">" + body + "</" + name + ">" : '/>');
 }
 exports.xml = xml;
-var html = _('div', { 'class': 'wrapper' }, _('div', { 'class': 'avatar' }, _('img', { src: '...' }), _('span', {}, 'Hello there'), _('br')));
-console.log(html);
-var pojo = ['div', { 'class': 'wrapper' },
-    ['div', { 'class': 'avatar' },
-        ['img', { src: '...' }],
-        ['span', null,
-            'Hello there'
-        ],
-        ['br'],
-    ],
-];
-console.log(xml(pojo));
+// var html =
+//     _('div', {'class': 'wrapper'},
+//         _('div', {'class': 'avatar'},
+//             _('img', {src: '...'}),
+//             _('span', {},
+//                 'Hello there'
+//             ),
+//             _('br')
+//         )
+//     );
+// console.log(html);
+//
+// var pojo =
+//     ['div', {'class': 'wrapper'},
+//         ['div', {'class': 'avatar'},
+//             ['img', {src: '...'}],
+//             ['span', null,
+//                 'Hello there'
+//             ],
+//             ['br'],
+//         ],
+//     ];
+// console.log(xml(pojo));
