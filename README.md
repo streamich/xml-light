@@ -97,3 +97,39 @@ var react_dom = xml(
     ], React.h
 );
 ```
+
+Or even:
+
+```js
+React.xml = function(pojo) {
+    return xml(pojo, React.h);
+};
+```
+
+So now, instead installing `.jsx` to `.js` compiler and writing your components in some weird `xml-js` mix language:
+
+```jsx
+var CommentBox = React.createClass({
+    render: function() {
+        return (
+            <div className="commentBox">
+                Hello, world! I am a CommentBox.
+            </div>
+        );
+    }
+});
+```
+
+You can do everything in **100%** JavaScript:
+
+```jsx
+var CommentBox = React.createClass({
+    render: function() {
+        React.xml(
+            ['div', {className: 'commentBox'},
+                'Hello, world! I am a CommentBox.'
+            ]
+        );
+    }
+});
+```
