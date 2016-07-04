@@ -126,6 +126,9 @@ You can do everything in **100%** JavaScript:
 var CommentBox = React.createClass({
     render: function() {
         React.xml(
+            // BONUS:
+            // You can now add plain comments to your React templates,
+            // without the required {/* */} syntax (in some places).           
             ['div', {className: 'commentBox'},
                 'Hello, world! I am a CommentBox.'
             ]

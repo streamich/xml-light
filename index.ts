@@ -40,7 +40,6 @@ export function _(name: string, attributes: Tattributes = {}, ...children: strin
 //     return `<${name}${attr ? ' ' + attr : ''}` + (body ? `>${body}</${name}>` : '/>');
 // }
 
-declare var React: any;
 export function xml(pojo, h = _) {
     var list = [pojo[0], pojo[1] || null];
     // Add children
@@ -50,3 +49,4 @@ export function xml(pojo, h = _) {
     }
     return h.apply(null, list);
 }
+
