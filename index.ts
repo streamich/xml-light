@@ -45,7 +45,7 @@ export function xml(pojo, h = _) {
     // Add children
     for(var i = 2; i < pojo.length; i++) {
         var child = pojo[i];
-        list.push(typeof child === 'object' ? xml(child, h) : child);
+        list.push(child instanceof Array ? xml(child, h) : child);
     }
     return h.apply(null, list);
 }
