@@ -133,3 +133,12 @@ var CommentBox = React.createClass({
     }
 });
 ```
+
+TypeScript definitions for your extension:
+
+```ts
+declare namespace __React {
+    export var h: (...pojo: any[]) => React.ReactElement<any>;
+    export var xml: (pojo: any[]) => React.ReactElement<any>;
+}
+```
