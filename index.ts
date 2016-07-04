@@ -25,40 +25,28 @@ export function _(name: string, attributes: Tattributes = {}, ...children: strin
 }
 
 
-export function xml(pojo) {
-    var inner = [];
+
+// export function xml(pojo) {
+//     var inner = [];
+//     for(var i = 2; i < pojo.length; i++) {
+//         var child = pojo[i];
+//         inner.push(child instanceof Array ? xml.call(null, child) : child);
+//     }
+//
+//     var [name, attributes] = pojo;
+//     var attr = formatAttr(attributes || null);
+//
+//     var body = inner.join('');
+//     return `<${name}${attr ? ' ' + attr : ''}` + (body ? `>${body}</${name}>` : '/>');
+// }
+
+declare var React: any;
+export function xml(pojo, h = _) {
+    var list = [pojo[0], pojo[1] || null];
+    // Add children
     for(var i = 2; i < pojo.length; i++) {
         var child = pojo[i];
-        inner.push(child instanceof Array ? xml.call(null, child) : child);
+        list.push(typeof child === 'object' ? xml(child, h) : child);
     }
-
-    var [name, attributes] = pojo;
-    var attr = formatAttr(attributes || null);
-
-    var body = inner.join('');
-    return `<${name}${attr ? ' ' + attr : ''}` + (body ? `>${body}</${name}>` : '/>');
+    return h.apply(null, list);
 }
-
-// var html =
-//     _('div', {'class': 'wrapper'},
-//         _('div', {'class': 'avatar'},
-//             _('img', {src: '...'}),
-//             _('span', {},
-//                 'Hello there'
-//             ),
-//             _('br')
-//         )
-//     );
-// console.log(html);
-//
-// var pojo =
-//     ['div', {'class': 'wrapper'},
-//         ['div', {'class': 'avatar'},
-//             ['img', {src: '...'}],
-//             ['span', null,
-//                 'Hello there'
-//             ],
-//             ['br'],
-//         ],
-//     ];
-// console.log(xml(pojo));

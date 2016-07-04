@@ -24,38 +24,14 @@ function _(name, attributes) {
     return ("<" + name + (attr ? ' ' + attr : '')) + (body ? ">" + body + "</" + name + ">" : '/>');
 }
 exports._ = _;
-function xml(pojo) {
-    var inner = [];
+function xml(pojo, h) {
+    if (h === void 0) { h = _; }
+    var list = [pojo[0], pojo[1] || null];
+    // Add children
     for (var i = 2; i < pojo.length; i++) {
         var child = pojo[i];
-        inner.push(child instanceof Array ? xml.call(null, child) : child);
+        list.push(typeof child === 'object' ? xml(child, h) : child);
     }
-    var name = pojo[0], attributes = pojo[1];
-    var attr = formatAttr(attributes || null);
-    var body = inner.join('');
-    return ("<" + name + (attr ? ' ' + attr : '')) + (body ? ">" + body + "</" + name + ">" : '/>');
+    return h.apply(null, list);
 }
 exports.xml = xml;
-// var html =
-//     _('div', {'class': 'wrapper'},
-//         _('div', {'class': 'avatar'},
-//             _('img', {src: '...'}),
-//             _('span', {},
-//                 'Hello there'
-//             ),
-//             _('br')
-//         )
-//     );
-// console.log(html);
-//
-// var pojo =
-//     ['div', {'class': 'wrapper'},
-//         ['div', {'class': 'avatar'},
-//             ['img', {src: '...'}],
-//             ['span', null,
-//                 'Hello there'
-//             ],
-//             ['br'],
-//         ],
-//     ];
-// console.log(xml(pojo));
