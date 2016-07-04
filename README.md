@@ -83,3 +83,17 @@ This is equivalent to:
 var react_dom = React.createElement('div', {className: 'test'},
     React.createElement('span', null, 'Hello world!'));
 ```
+
+You might consider creating a *React Virtual Hypertext* method for convenience:
+
+```js
+React.h = React.createElement.bind(React);
+
+var react_dom = xml(
+    ['div', {className: 'test'},
+        ['span', null,
+            'Hello world!'
+        ]
+    ], React.h
+);
+```
