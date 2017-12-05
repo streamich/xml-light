@@ -29,7 +29,7 @@ export function xml(pojo, h = _) {
     // Add children
     for(var i = 2; i < pojo.length; i++) {
         var child = pojo[i];
-        function c(child) {
+        var c = function(child) {
             if(child instanceof Array) {
                 // This flattens an array of children, makes compatible with React.
                 if(child[0] instanceof Array)
