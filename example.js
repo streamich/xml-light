@@ -37,3 +37,12 @@ React = {
 };
 console.log(xml.xml(pojo, React.createElement.bind(React)));
 console.log(xml.xml(pojo, _));
+
+
+var pojo =
+    ['span', null, [
+        ['span', null, '1'],
+        ['span', null, '2'],
+    ]];
+console.log(xml.xml(pojo));
+
